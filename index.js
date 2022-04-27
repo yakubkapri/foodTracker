@@ -1,9 +1,5 @@
-/* 
-base url https://firestore.googleapis.com/v1/projects/jsdemo-3f387/databases/(default)/documents/{namespace}
-
- */
-
 import FetchWrapper from './fetch-wrapper.js';
+import { calculateCalories, capitalize } from './helpers.js';
 
 const API = new FetchWrapper(
   'https://firestore.googleapis.com/v1/projects/jsdemo-3f387/databases/(default)/documents/suntala'
@@ -39,12 +35,22 @@ form.addEventListener('submit', (event) => {
       'beforeend',
       `<li class="card">
   <div>
-    <h3 class="name">${nameSelect.value}</h3>
-    <div class="calories">0 calories</div>
+    <h3 class="name">${capitalize(nameSelect.value)}</h3>
+    <div class="calories">${calculateCalories(
+      carbsInput.value,
+      proteinInput.value,
+      fatInput.value
+    )} calories</div>
     <ul class="macros">
-      <li class="carbs"><div>Carbs</div><div class="value">${carbsInput.value}g</div></li>
-      <li class="protein"><div>Protein</div><div class="value">${proteinInput.value}g</div></li>
-      <li class="fat"><div>Fat</div><div class="value">${fatInput.value}g</div></li>
+      <li class="carbs"><div>Carbs</div><div class="value">${
+        carbsInput.value
+      }g</div></li>
+      <li class="protein"><div>Protein</div><div class="value">${
+        proteinInput.value
+      }g</div></li>
+      <li class="fat"><div>Fat</div><div class="value">${
+        fatInput.value
+      }g</div></li>
     </ul>
   </div>
 </li>`
