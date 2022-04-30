@@ -1,6 +1,7 @@
 /*
 capitalize the first letter of word it receives and lowercase the rest
  */
+
 export const capitalize = (word) => {
   return word[0].toUpperCase() + word.substring(1).toLowerCase();
 };

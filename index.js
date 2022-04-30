@@ -1,5 +1,6 @@
 import FetchWrapper from './fetch-wrapper.js';
 import { calculateCalories, capitalize } from './helpers.js';
+import snackbar from 'snackbar/lib/snackbar';
 
 const API = new FetchWrapper(
   'https://firestore.googleapis.com/v1/projects/jsdemo-3f387/databases/(default)/documents/suntala'
@@ -27,8 +28,11 @@ form.addEventListener('submit', (event) => {
     console.log(data);
     if (data.error) {
       // there was an error
+      snackbar.show('Some data is missing.');
       return;
     }
+
+    snackbar.show('Food added successfully.');
 
     // Add new food to the list
     foodList.insertAdjacentHTML(
